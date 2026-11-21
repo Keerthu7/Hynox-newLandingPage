@@ -25,3 +25,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local reference video inspection tools and frames
+/.reference-tools/
+/.reference-frames/
