@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import WorkShowcase from '@/components/work-showcase'
 import AboutShowcase from '@/components/about-showcase'
+import CompanyAbout from '@/components/company-about'
 import { ArrowDown, ArrowUpRight, Menu, X, Play } from 'lucide-react'
 
 const buildServices = [
@@ -37,7 +38,7 @@ function ServiceList({ title, intro, items, id }: { title: string; intro: string
   </section>
 }
 
-type SiteView = 'home' | 'services' | 'work' | 'about' | 'contact'
+type SiteView = 'home' | 'services' | 'work' | 'about' | 'branding' | 'contact'
 
 const pageIntros = {
   services: ['SOFTWARE & CREATIVE SERVICES', 'Build your business. Grow your brand.', 'Website development, mobile apps, custom software and creative services from Coimbatore, Tamil Nadu.'],
@@ -112,8 +113,8 @@ export default function SitePage({ view = 'home' }: { view?: SiteView }) {
   }
   const closeMenu = () => setMenuOpen(false)
   return <><main>
-    <header className="site-header"><Link className="wordmark" href="/" aria-label="Hynox home">HYNOX<span className="wordmark-dot">.</span></Link><span className="header-descriptor">SOFTWARE & BRANDING COMPANY</span><nav className={menuOpen ? 'main-nav nav-open' : 'main-nav'} aria-label="Main navigation"><Link href="/services" onClick={closeMenu}>Services</Link><Link href="/work" onClick={closeMenu}>Work</Link><span className="nav-unavailable" aria-disabled="true">About</span><Link href="/contact" onClick={closeMenu}>Contact</Link></nav><Link className="header-cta" href="/contact">Start a project <ArrowUpRight size={15} /></Link><button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button></header>
-    {view !== 'home' && view !== 'work' && view !== 'about' && <section className="page-intro">
+    <header className="site-header"><Link className="wordmark" href="/" aria-label="Hynox home">HYNOX<span className="wordmark-dot">.</span></Link><span className="header-descriptor">SOFTWARE & BRANDING COMPANY</span><nav className={menuOpen ? 'main-nav nav-open' : 'main-nav'} aria-label="Main navigation"><Link href="/#services" onClick={closeMenu}>Services</Link><Link href="/work" onClick={closeMenu}>Work</Link><Link href="/about" onClick={closeMenu}>About</Link><Link href="/contact" onClick={closeMenu}>Contact</Link></nav><Link className="header-cta" href="/contact">Start a project <ArrowUpRight size={15} /></Link><button className="menu-toggle" type="button" onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? 'Close navigation' : 'Open navigation'} aria-expanded={menuOpen}>{menuOpen ? <X /> : <Menu />}</button></header>
+    {view !== 'home' && view !== 'work' && view !== 'about' && view !== 'branding' && <section className="page-intro">
       <Link href="/" className="eyebrow">HYNOX / HOME</Link>
       <span className="eyebrow">{pageIntros[view][0]}</span>
       <h1>{pageIntros[view][1]}</h1>
@@ -135,7 +136,7 @@ export default function SitePage({ view = 'home' }: { view?: SiteView }) {
     <section className="products" aria-labelledby="products-title"><div className="products-heading"><span className="eyebrow">OUR PRODUCTS</span><h2 id="products-title">Products built by Hynox.</h2></div><div className="products-grid"><a className="product-card" href="https://campus.hynox.in/" target="_blank" rel="noreferrer"><div className="product-preview campus-preview" aria-hidden="true"><div className="preview-top"><span>HYNOX CAMPUS</span><span className="preview-avatar">H</span></div><div className="preview-welcome">Learn by doing.<br /><span>Build what&apos;s next.</span></div><div className="preview-course"><span className="preview-course-mark">01</span><span><b>Industry-ready skills</b><small>Explore your learning path</small></span><ArrowUpRight size={14} /></div></div><div className="product-meta"><span>01 / PRODUCT</span><span>EdTech · Learning Platform</span></div><h3>HYNOX CAMPUS</h3><p>An industry-integrated learning platform bridging education and real-world skills.</p><span className="product-link">Explore Product <ArrowUpRight size={15} /></span></a><a className="product-card" href="https://billdesk.hynox.in/" target="_blank" rel="noreferrer"><div className="product-preview billing-preview" aria-hidden="true"><div className="preview-top"><span>BILLDESK</span><span className="billing-dot" /></div><div className="billing-title">Your business,<br />in good order.</div><div className="billing-stats"><span><small>INVOICES</small><b>Ready to go</b></span><span><small>THIS MONTH</small><b>On track</b></span></div><div className="billing-lines"><i /><i /><i /></div></div><div className="product-meta"><span>02 / PRODUCT</span><span>Billing Software</span></div><h3>BILLDESK</h3><p>Simple billing and business management software for everyday operations.</p><span className="product-link">Explore Product <ArrowUpRight size={15} /></span></a></div></section>
     </>}
     {(view === 'home') && <>
-    <section className="work" id="work"><div className="work-heading"><div><span className="eyebrow">A FEW THINGS WE&apos;VE MADE / 2022—26</span><h2>Selected work<span className="wordmark-dot">.</span></h2></div><p>Ideas built into real businesses.<br />A selection of collaborations.</p></div><div className="project-grid">{projects.map((project, index) => <a className={`project-card project-${index + 1}`} href="/branding" key={project.name}><div className="project-image"><Image src={project.image} alt={project.alt} width={project.width} height={project.height} sizes="(max-width: 640px) 88vw, 45vw" className="project-screenshot" /><span className="project-index">0{index + 1}</span><span className="project-arrow"><ArrowUpRight size={20} /></span></div><div className="project-info"><h3>{project.name}</h3><span>{project.category}</span></div></a>)}</div><a className="all-work-link" href="/contact">Have a project in mind? <span>Tell us about it <ArrowUpRight size={16} /></span></a></section>
+    <section className="work" id="work"><div className="work-heading"><div><span className="eyebrow">A FEW THINGS WE&apos;VE MADE / 2022—26</span><h2>Selected work<span className="wordmark-dot">.</span></h2></div><p>Ideas built into real businesses.<br />A selection of collaborations.</p></div><div className="project-grid">{projects.map((project, index) => <a className={`project-card project-${index + 1}`} href="/work" key={project.name}><div className="project-image"><Image src={project.image} alt={project.alt} width={project.width} height={project.height} sizes="(max-width: 640px) 88vw, 45vw" className="project-screenshot" /><span className="project-index">0{index + 1}</span><span className="project-arrow"><ArrowUpRight size={20} /></span></div><div className="project-info"><h3>{project.name}</h3><span>{project.category}</span></div></a>)}</div><a className="all-work-link" href="/contact">Have a project in mind? <span>Tell us about it <ArrowUpRight size={16} /></span></a></section>
     </>}
     {(view === 'home') && <>
     <section className="clients"><span className="eyebrow">GOOD COMPANY / GOOD WORK</span><h2>Trusted by businesses<br />building their future.</h2><div className="client-marquee" aria-label="Selected client names"><div className="marquee-track"><span>SUGARSTAR</span><span>TEEREX</span><span>TEAM3</span><span>GRAAPS</span><span>KIDO CARE</span><span>AHARRAA</span><span>JP INTERIORS</span><span aria-hidden="true">SUGARSTAR</span><span aria-hidden="true">TEEREX</span><span aria-hidden="true">TEAM3</span></div></div><p className="client-note">A few of the teams we&apos;ve had the pleasure of building with.</p></section>
@@ -162,11 +163,12 @@ export default function SitePage({ view = 'home' }: { view?: SiteView }) {
     </section>
     </>}
     {view === 'work' && <WorkShowcase />}
-    {view === 'about' && <AboutShowcase />}
+    {view === 'branding' && <AboutShowcase />}
+    {view === 'about' && <CompanyAbout />}
     {(view === 'home') && <>
     <section className="about" id="about"><span className="eyebrow">A CONNECTED WAY OF WORKING</span><h2>One partner. Two capabilities.<br /><em>Endless possibilities.</em></h2><div className="about-points"><article><span>01</span><h3>Technology + creativity</h3><p>Engineering and creative capabilities, together in one team.</p></article><article><span>02</span><h3>Built around your business</h3><p>Solutions shaped around your goals, workflows and customers.</p></article><article><span>03</span><h3>From idea to execution</h3><p>Strategy, design and delivery in one connected process.</p></article></div></section>
     </>}
-    {(view === 'home' || view === 'contact' || view === 'services' || view === 'work' || view === 'about') && <>
+    {(view === 'home' || view === 'contact' || view === 'services' || view === 'work' || view === 'about' || view === 'branding') && <>
     <section className="contact" id="contact"><div className="contact-intro"><span className="eyebrow">HAVE SOMETHING IN MIND?</span><h2>Let&apos;s build<br /><em>something meaningful.</em></h2><p>Tell us a little about what you&apos;re working on. We&apos;ll take it from there.</p><a className="whatsapp-link" href="https://wa.me/918870524355?text=Hi%20Hynox%2C%20I%27d%20like%20to%20start%20a%20project." target="_blank" rel="noreferrer">Prefer WhatsApp? Start a chat <ArrowUpRight size={15} /></a></div></section>
     </>}
     <footer className="footer"><a className="wordmark" href="/#top">HYNOX<span className="wordmark-dot">.</span></a><span>BUILDING BRANDS. DEVELOPING TECHNOLOGY.</span><a href="mailto:thehynoxofficial@gmail.com">HELLO@HYNOX.IN <ArrowUpRight size={13} /></a><small>© HYNOX 2026</small></footer>

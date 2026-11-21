@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <SitePage view="about" />
+  return <SitePage view="branding" />
 }

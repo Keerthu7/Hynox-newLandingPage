@@ -1,0 +1,150 @@
+.company-about { --company-bg:#f5f7f0;--company-ink:#0e140d;--company-muted:#9a9e92;--company-accent:#16805c;background:var(--company-bg);color:var(--company-ink);font-family:Arial,Helvetica,sans-serif; }
+.company-about * { box-sizing:border-box; }
+.company-about em { font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.075em; }
+.company-hero,.company-section { padding-left:10.4%;padding-right:10.4%; }
+.company-hero { padding-top:34px;padding-bottom:64px; }
+.company-label { display:flex;justify-content:space-between;gap:24px;padding-bottom:22px;border-bottom:1px solid #d8dfd2;font-size:8px;font-weight:400;letter-spacing:.12em;line-height:1.5; }
+.company-label>span:first-child { color:var(--company-accent); }
+.company-hero .company-label { border:0;padding-bottom:0; }
+.company-hero-type { position:relative;margin:40px 0 54px; }
+.company-hero h1 { margin:0;letter-spacing:-.085em;font-size:clamp(72px,12.4vw,180px);line-height:.79;font-weight:400; }
+.company-hero h1>span { display:block; }
+.company-brands { margin-left:21%; }
+.company-dot { color:var(--company-accent); }
+.company-hero h1 .company-developing { font-size:clamp(36px,6.5vw,94px);letter-spacing:-.065em;margin-top:24px;line-height:.98; }
+.company-orbit { position:absolute;right:-2%;top:26%;width:170px;height:170px;border:1px solid #e7ece1;border-radius:50%;display:grid;place-items:center; }
+.company-orbit::after { content:'';position:absolute;inset:18px;border:1px solid #e7ece1;border-radius:50%; }
+.company-orbit>span { color:#5e9e83;background:#edf3e8;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:28px; }
+.company-orbit small { position:absolute;right:-18px;bottom:-18px;font-size:7px;letter-spacing:.1em;color:#a0ab95; }
+.company-hero-bottom { display:flex;align-items:flex-end;justify-content:space-between;gap:30px; }
+.company-hero-bottom>div { max-width:360px; }
+.company-hero-bottom p { font-size:12px;line-height:1.7;color:#5f6859;margin:0 0 18px; }
+.company-hero-links { display:flex;gap:18px;align-items:center; }
+.company-solid { display:inline-flex;align-items:center;gap:18px;font-size:10px;background:var(--company-ink);color:#fff;padding:15px 17px; }
+.company-text-link { display:inline-flex;align-items:center;gap:20px;font-size:10px;padding-bottom:8px;border-bottom:1px solid; }
+.company-scroll { display:flex;flex-direction:column;align-items:center;gap:16px;font-size:7px;letter-spacing:.14em;color:#6b7861;margin-right:17%; }
+.company-scroll svg { color:var(--company-accent); }
+.company-page-number { font-size:8px;color:#7b8770;letter-spacing:.1em; }
+.company-section { padding-top:88px;padding-bottom:88px; }
+.company-heading { display:flex;align-items:flex-end;justify-content:space-between;gap:50px;margin:58px 0 44px; }
+.company-heading h2,.company-story h2 { font-size:clamp(40px,5.7vw,82px);font-weight:400;letter-spacing:-.075em;line-height:1.03;margin:0; }
+.company-heading h2 span,.company-story h2 span { color:var(--company-muted); }
+.company-heading>p { max-width:260px;font-size:12px;color:#727c67;line-height:1.8;margin:0 0 3px; }
+.company-story-grid { display:grid;grid-template-columns:1.7fr 1fr;gap:72px;align-items:end;margin:64px 0 90px; }
+.company-story-grid p { font-size:12px;line-height:1.8;color:#727a69;margin:0; }
+.company-story-grid .company-story-lead { font-size:17px;line-height:1.6;color:var(--company-ink);letter-spacing:-.025em; }
+.company-story-grid .company-text-link { margin-top:20px; }
+.company-story-rule { display:flex;align-items:center;gap:24px;font-size:7px;letter-spacing:.1em;color:#8a9680; }
+.company-story-rule i { flex:1;height:1px;background:#d5ddcd; }
+.company-story-rule b { color:var(--company-accent);font-size:18px;font-weight:400; }
+.company-disciplines,.company-selected { background:#e8eee3; }
+.company-discipline-grid { display:grid;grid-template-columns:1fr 1fr;gap:12px; }
+.company-discipline-grid article { padding:32px;background:#f7f9f3; }
+.company-discipline-grid article.company-discipline-dark { background:#10170e;color:#f4f7ed; }
+.company-card-label { display:flex;justify-content:space-between;align-items:center;font-size:7px;letter-spacing:.08em;color:#929b87; }
+.company-discipline-grid h3 { font-size:clamp(34px,4.2vw,60px);font-weight:400;letter-spacing:-.07em;line-height:.95;margin:48px 0 20px; }
+.company-discipline-grid p { max-width:350px;font-size:12px;line-height:1.7;color:#78816d; }
+.company-discipline-grid ul { list-style:none;display:flex;flex-wrap:wrap;gap:7px;margin:22px 0 28px;padding:0; }
+.company-discipline-grid li { border:1px solid #d9dfd1;border-radius:30px;font-size:8px;padding:9px 10px;color:#5d6854; }
+.company-discipline-dark li { border-color:#303b29;color:#b0bba3; }
+.company-discipline-dark p { color:#929e84; }
+.company-process-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:72px; }
+.company-process-grid article>span { font-size:8px;color:var(--company-accent); }
+.company-process-track { position:relative;height:1px;background:#d1dcc7;margin:22px 0 28px; }
+.company-process-track::before { content:'';position:absolute;left:0;top:-2px;background:var(--company-accent);width:6px;height:6px;border-radius:50%; }
+.company-process-grid h3 { font-size:18px;font-weight:400;letter-spacing:-.04em; }
+.company-process-grid p { font-size:10px;line-height:1.8;color:#7a846f;max-width:230px; }
+.company-monogram { height:340px;background:#e1e8da;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px; }
+.company-monogram>span { position:relative;display:grid;place-items:center;width:120px;height:120px;border:1px solid #b9cec0;border-radius:50%;background:#edf1e7;color:var(--company-accent);font-size:52px; }
+.company-monogram i { position:absolute;right:0;top:-8px;font-style:normal;font-size:25px; }
+.company-monogram small { font-size:7px;color:#89977d;letter-spacing:.15em; }
+.company-people-caption { display:flex;justify-content:space-between;gap:24px;margin-top:16px;color:#7a8770;font-size:7px;letter-spacing:.08em; }
+.company-philosophy { background:#10170e;color:#f5f8ec; }
+.company-small { font-size:8px;letter-spacing:.12em;color:#939f88; }
+.company-philosophy h2 { font-size:clamp(35px,6.2vw,90px);font-weight:400;letter-spacing:-.07em;line-height:1.12;margin:64px 0; }
+.company-philosophy h2 em { color:#a3ad9a; }
+.company-philosophy h2>span { color:#58a37b; }
+.company-philosophy-bottom { display:flex;align-items:center;justify-content:space-between;gap:36px;border-top:1px solid #2b3524;padding-top:24px; }
+.company-philosophy-bottom>span { color:#69a98a;font-size:25px; }
+.company-philosophy-bottom p { font-size:11px;line-height:1.8;color:#a6b09a; }
+.company-philosophy-bottom small { font-size:7px;letter-spacing:.1em;color:#7f8c72; }
+.company-values-list { margin-left:23%;margin-top:46px; }
+.company-values-list article { display:grid;grid-template-columns:42px 1fr 18px;align-items:center;gap:24px;padding:25px 0;border-top:1px solid #d4ddca; }
+.company-values-list article:last-child { border-bottom:1px solid #d4ddca; }
+.company-values-list article>span { font-size:8px;color:var(--company-accent); }
+.company-values-list h3 { font-size:16px;font-weight:400;letter-spacing:-.03em;margin:0 0 8px; }
+.company-values-list p { font-size:10px;color:#7e8873;margin:0;line-height:1.7; }
+.company-values-list svg { color:var(--company-accent);opacity:0;transition:opacity .2s; }
+.company-values-list article:hover svg { opacity:1; }
+.company-selected .company-heading { margin-bottom:24px; }
+.company-selected-intro { display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:44px; }
+.company-selected-intro p { font-size:12px;line-height:1.7;color:#67745b;margin:0; }
+.company-work-grid { display:grid;grid-template-columns:1fr 1fr;gap:32px 16px;align-items:start; }
+.company-work-card { align-self:start;min-width:0; }
+.company-work-card>div { width:100%;aspect-ratio:16/9;padding:0;margin:0;overflow:hidden;display:grid;place-items:center; }
+.company-work-card img { display:block;width:100%;height:100%;object-fit:contain;transition:filter .3s; }
+.company-work-card-aharraa img { object-fit:cover;object-position:center; }
+.company-work-card:hover img { filter:brightness(.96); }
+.company-work-card h3 { font-size:15px;font-weight:400;letter-spacing:-.035em;margin:13px 0 8px; }
+.company-work-card p { font-size:8px;letter-spacing:.06em;color:#7e8b72;margin:0; }
+.company-team-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:32px 16px; }
+.company-team-photo { position:relative; }
+.company-team-photo img { display:block;width:100%;height:auto;aspect-ratio:.85;object-fit:cover; }
+.company-team-photo>span { position:absolute;left:10px;top:10px;background:#f4f6efdd;color:#526348;font-size:7px;letter-spacing:.08em;padding:6px 8px; }
+.company-team-caption { display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:13px; }
+.company-team-caption h3 { font-size:14px;font-weight:400;letter-spacing:-.04em;margin:0; }
+.company-team-caption>span { font-size:8px;color:#7f8b73;text-align:right; }
+.company-team-note { font-size:9px;color:#7d8971;margin:25px 0 0;line-height:1.6; }
+@media(max-width:900px) { .company-hero,.company-section { padding-left:7%;padding-right:7%; } .company-orbit { width:120px;height:120px;right:0; } .company-story-grid { gap:36px;grid-template-columns:1.4fr 1fr; } .company-discipline-grid article { padding:24px; } .company-heading>p { max-width:220px; } }
+@media(max-width:620px) {
+  .company-hero,.company-section { padding-left:6%;padding-right:6%; }
+  .company-hero { padding-top:28px;padding-bottom:46px; }
+  .company-label { font-size:7px;gap:14px;padding-bottom:18px; }
+  .company-hero-type { margin:45px 0 32px; }
+  .company-hero h1 { font-size:19vw; }
+  .company-brands { margin-left:17%; }
+  .company-hero h1 .company-developing { font-size:8vw;margin-top:23px;line-height:1.05; }
+  .company-orbit { width:56px;height:56px;right:0;top:6%; }
+  .company-orbit::after { inset:7px; }
+  .company-orbit>span { width:28px;height:28px;font-size:20px; }
+  .company-orbit small { display:none; }
+  .company-hero-bottom { flex-wrap:wrap;gap:26px; }
+  .company-hero-bottom>div { max-width:none; }
+  .company-hero-bottom p { font-size:12px; }
+  .company-hero-links { gap:16px; }
+  .company-solid { font-size:10px;padding:14px;gap:10px; }
+  .company-text-link { font-size:10px;gap:14px; }
+  .company-scroll { flex-direction:row;margin-right:0;gap:12px; }
+  .company-page-number { margin-left:auto; }
+  .company-section { padding-top:50px;padding-bottom:54px; }
+  .company-heading { display:block;margin:34px 0 28px; }
+  .company-heading h2,.company-story h2 { font-size:10vw; }
+  .company-heading>p { max-width:300px;margin-top:24px;font-size:12px; }
+  .company-story-grid { grid-template-columns:1fr;gap:28px;margin:38px 0 42px; }
+  .company-story-grid .company-story-lead { font-size:16px; }
+  .company-story-rule { gap:12px;font-size:6px; }
+  .company-discipline-grid { grid-template-columns:1fr;gap:14px; }
+  .company-discipline-grid article { padding:25px; }
+  .company-discipline-grid h3 { font-size:42px;margin-top:34px; }
+  .company-process-grid { grid-template-columns:1fr 1fr;gap:24px;margin-top:36px; }
+  .company-process-grid h3 { font-size:17px; }
+  .company-process-grid p { font-size:11px; }
+  .company-monogram { height:250px; }
+  .company-monogram>span { width:95px;height:95px;font-size:42px; }
+  .company-people-caption { flex-direction:column;gap:8px;font-size:6px; }
+  .company-philosophy h2 { font-size:7.7vw;line-height:1.22;margin:38px 0; }
+  .company-philosophy-bottom { flex-wrap:wrap;gap:18px; }
+  .company-philosophy-bottom p { flex:1;min-width:230px;font-size:11px; }
+  .company-philosophy-bottom small { margin-left:40px; }
+  .company-values-list { margin-left:0;margin-top:32px; }
+  .company-values-list article { grid-template-columns:20px 1fr 15px;gap:14px;padding:22px 0; }
+  .company-values-list h3 { font-size:15px; }
+  .company-values-list p { font-size:11px; }
+  .company-selected-intro { align-items:flex-start;flex-direction:column;gap:22px;margin-bottom:30px; }
+  .company-work-grid { grid-template-columns:1fr;gap:28px; }
+  .company-team-grid { grid-template-columns:1fr 1fr;gap:26px 13px; }
+  .company-team-caption { flex-direction:column;gap:5px; }
+  .company-team-caption h3 { font-size:13px; }
+  .company-team-caption>span { text-align:left;font-size:8px; }
+  .company-team-photo>span { top:6px;left:6px;font-size:6px;padding:5px; }
+}
