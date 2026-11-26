@@ -23,7 +23,7 @@ function Heading({ children, note }: { children: React.ReactNode; note?: React.R
 }
 
 function SamplePhoto({ image, alt, className = '', onClick }: { image: string; alt: string; className?: string; onClick?: () => void }) {
-  const picture = <Image src={`/about-reference/${image}.jpg`} alt={alt} fill sizes="(max-width:620px) 88vw, 48vw" />
+  const picture = <Image src={image.startsWith('/') ? image : `/about-reference/${image}.jpg`} alt={alt} fill sizes="(max-width:620px) 88vw, 48vw" />
   return onClick ? <button type="button" className={`about-sample ${className}`} onClick={onClick} aria-label={`Preview ${alt.toLowerCase()}`}>{picture}</button> : <div className={`about-sample ${className}`}>{picture}</div>
 }
 
@@ -117,20 +117,20 @@ export default function AboutShowcase() {
       <Topline left="04 / VISUAL STORIES" right="PHOTOGRAPHY & MOTION" />
       <Heading note={<>Photography, moving images, and the<br />moments in between.</>}>Visual stories.<br /><em>Creative work.</em></Heading>
       <div className="about-story-grid">
-        <div className="about-story-wide"><SamplePhoto image="architecture" alt="Sample architecture photography — Light, line, and living" /><ShowcaseVideo src="/promotional%20video1.mp4" label="Promotional video one" /></div>
-        <SamplePhoto image="product-still" alt="Sample product photography — An everyday ritual" className="about-story-tall" />
-        <SamplePhoto image="lifestyle" alt="Sample brand photography — A study in movement" className="about-story-tall" />
-        <div className="about-story-wide"><SamplePhoto image="brand-flatlay" alt="Sample commercial photography — The quiet detail" /><ShowcaseVideo src="/promotional%20video2.mp4" label="Promotional video two" /></div>
+        <div className="about-story-wide"><SamplePhoto image="/img1.png" alt="Illuminated residence and landscaped garden at night" /><ShowcaseVideo src="/promotional%20video1.mp4" label="Promotional video one" /></div>
+        <SamplePhoto image="/about-reference/product-still-clean.png" alt="Amber dropper bottle on stone — Product Photography: An everyday ritual" className="about-story-tall" />
+        <SamplePhoto image="/img3.jpg" alt="Modern glass-fronted commercial building" className="about-story-tall about-story-rotated" />
+        <div className="about-story-wide"><SamplePhoto image="/img4.png" alt="Traditional courtyard with stone pillars and timber ceiling" /><ShowcaseVideo src="/promotional%20video2.mp4" label="Promotional video two" /></div>
         <ShowcaseVideo src="/Reel.mp4" label="Brand reel" className="about-story-tall" />
-        <SamplePhoto image="architecture" alt="Sample interiors photography — A place to pause" className="about-story-tall" />
+        <SamplePhoto image="/img5.png" alt="Illuminated commercial building at night" className="about-story-tall" />
       </div>
-      <p className="about-note">Promotional films and reel by HYNOX. Still photographs are sample imagery for layout direction.</p>
+      <p className="about-note">Architectural photography, promotional films, and creative reels by HYNOX.</p>
     </section>
 
     <section className="about-block about-client-work">
       <Topline left="05 / SELECTED CLIENT WORK" right="FEATURED PROJECT" />
       <Heading note={<span className="about-client-name">T3 ASSOCIATES<em>Temple City</em></span>}>Selected<br /><em>client work.</em></Heading>
-      <div className="about-client-grid"><div><SamplePhoto image="architecture" alt="Sample image for Temple City layout, not T3 project media" className="about-client-architecture" /><span className="about-sample-tag">SAMPLE IMAGE · NOT T3 PROJECT MEDIA</span></div><div><ShowcaseVideo src="/Temple%20city.mp4" label="Temple City project film for T3 Associates" className="about-client-production" /><p className="about-client-services">BRANDING · PHOTOGRAPHY · VIDEOGRAPHY · CREATIVE PRODUCTION</p><p>Temple City — a project film for T3 Associates.</p></div></div>
+      <div className="about-client-grid"><div><SamplePhoto image="/temple-city-client.png" alt="Temple City exterior with timber roof and brick facade" className="about-client-architecture" /></div><div><ShowcaseVideo src="/Temple%20city.mp4" label="Temple City project film for T3 Associates" className="about-client-production" /><p className="about-client-services">BRANDING · PHOTOGRAPHY · VIDEOGRAPHY · CREATIVE PRODUCTION</p><p>Temple City — a project film for T3 Associates.</p></div></div>
     </section>
 
     <section className="about-block about-partners">

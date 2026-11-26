@@ -81,6 +81,8 @@ button.about-sample { cursor:pointer; }
 .about-film-close { position:absolute;right:0;top:-42px;display:grid;place-items:center;width:34px;height:34px;padding:0;border:0;border-radius:50%;background:#fff;color:#152010;cursor:pointer; }
 .about-story-wide .about-sample { aspect-ratio:2.28; }
 .about-story-tall { height:100%;min-height:0; }
+.about-story-rotated { container-type:size; }
+.about-story-rotated img { width:100cqh!important;height:100cqw!important;max-width:none;inset:auto!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%) rotate(90deg); }
 .about-client-name { display:block;color:#0b100a;font-size:clamp(20px,2.5vw,34px);font-weight:500;letter-spacing:-.06em;text-align:right;line-height:1.1; }
 .about-client-name em { display:block;font-size:20px;color:#79816f;letter-spacing:-.04em;margin-top:16px; }
 .about-client-grid { display:grid;grid-template-columns:1.75fr 1fr;gap:14px; }
