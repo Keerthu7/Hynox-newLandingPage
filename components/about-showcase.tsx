@@ -3,7 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowDown, ArrowUpRight, Plus, Minus, X } from 'lucide-react'
+import { ArrowDown, ArrowUpRight, Plus, Minus, X, Play, Pause } from 'lucide-react'
 import './about-showcase.css'
 
 const services = [
@@ -25,6 +25,53 @@ function Heading({ children, note }: { children: React.ReactNode; note?: React.R
 function SamplePhoto({ image, alt, className = '', onClick }: { image: string; alt: string; className?: string; onClick?: () => void }) {
   const picture = <Image src={`/about-reference/${image}.jpg`} alt={alt} fill sizes="(max-width:620px) 88vw, 48vw" />
   return onClick ? <button type="button" className={`about-sample ${className}`} onClick={onClick} aria-label={`Preview ${alt.toLowerCase()}`}>{picture}</button> : <div className={`about-sample ${className}`}>{picture}</div>
+}
+
+function ShowcaseVideo({ src, label, className = '' }: { src: string; label: string; className?: string }) {
+  const dialogRef = useRef<HTMLDialogElement>(null)
+  const thumbnailRef = useRef<HTMLVideoElement>(null)
+  const filmRef = useRef<HTMLVideoElement>(null)
+  const [playing, setPlaying] = useState(false)
+  const [ratio, setRatio] = useState(16 / 9)
+
+  function keepSilent(event: React.SyntheticEvent<HTMLVideoElement>) {
+    event.currentTarget.muted = true
+    event.currentTarget.volume = 0
+  }
+
+  function openFilm() {
+    thumbnailRef.current?.pause()
+    dialogRef.current?.showModal()
+    const film = filmRef.current
+    if (film) {
+      film.muted = true
+      film.volume = 0
+      film.currentTime = 0
+      void film.play().catch(() => setPlaying(false))
+    }
+  }
+
+  function closeFilm() { dialogRef.current?.close() }
+  function toggleFilm() {
+    const film = filmRef.current
+    if (!film) return
+    if (film.paused) void film.play().catch(() => setPlaying(false))
+    else film.pause()
+  }
+
+  return <>
+    <button type="button" className={`about-sample about-video ${className}`} onClick={openFilm} aria-label={`Open ${label} in a larger player`}>
+      <video ref={thumbnailRef} src={src} autoPlay muted loop playsInline preload="metadata" onVolumeChange={keepSilent} onLoadedMetadata={event => { keepSilent(event); setRatio(event.currentTarget.videoWidth / event.currentTarget.videoHeight) }} aria-hidden="true" />
+      <span className="about-video-control"><Play size={25} fill="currentColor" /></span>
+    </button>
+    <dialog ref={dialogRef} className="about-film-dialog" aria-label={label} onClick={event => { if (event.target === event.currentTarget) closeFilm() }} onClose={() => { filmRef.current?.pause(); void thumbnailRef.current?.play().catch(() => {}) }}>
+      <button type="button" className="about-film-close" aria-label="Close video" onClick={closeFilm}><X size={24} /></button>
+      <div className="about-film-frame" style={{ aspectRatio: ratio, width: `min(90vw, ${82 * ratio}dvh, 1200px)` }}>
+        <video ref={filmRef} src={src} muted playsInline preload="none" onVolumeChange={keepSilent} onPlay={() => setPlaying(true)} onPause={() => setPlaying(false)} onEnded={() => setPlaying(false)} />
+        <button type="button" className="about-film-toggle" onClick={toggleFilm} aria-label={playing ? `Pause ${label}` : `Play ${label}`}><span className="about-video-control">{playing ? <Pause size={28} fill="currentColor" /> : <Play size={28} fill="currentColor" />}</span></button>
+      </div>
+    </dialog>
+  </>
 }
 
 export default function AboutShowcase() {
@@ -70,20 +117,20 @@ export default function AboutShowcase() {
       <Topline left="04 / VISUAL STORIES" right="PHOTOGRAPHY & MOTION" />
       <Heading note={<>Photography, moving images, and the<br />moments in between.</>}>Visual stories.<br /><em>Creative work.</em></Heading>
       <div className="about-story-grid">
-        <div className="about-story-wide"><SamplePhoto image="architecture" alt="Sample architecture photography — Light, line, and living" /><SamplePhoto image="production" alt="Sample promotional video — The making of a moment" onClick={() => openPreview('On set, behind the lens')} /></div>
+        <div className="about-story-wide"><SamplePhoto image="architecture" alt="Sample architecture photography — Light, line, and living" /><ShowcaseVideo src="/promotional%20video1.mp4" label="Promotional video one" /></div>
         <SamplePhoto image="product-still" alt="Sample product photography — An everyday ritual" className="about-story-tall" />
         <SamplePhoto image="lifestyle" alt="Sample brand photography — A study in movement" className="about-story-tall" />
-        <div className="about-story-wide"><SamplePhoto image="brand-flatlay" alt="Sample commercial photography — The quiet detail" /><SamplePhoto image="production" alt="Sample promotional video — The making of a moment" onClick={() => openPreview('The making of a moment')} /></div>
-        <SamplePhoto image="product" alt="Sample product reel — Product in focus" className="about-story-tall" onClick={() => openPreview('Product in focus')} />
+        <div className="about-story-wide"><SamplePhoto image="brand-flatlay" alt="Sample commercial photography — The quiet detail" /><ShowcaseVideo src="/promotional%20video2.mp4" label="Promotional video two" /></div>
+        <ShowcaseVideo src="/Reel.mp4" label="Brand reel" className="about-story-tall" />
         <SamplePhoto image="architecture" alt="Sample interiors photography — A place to pause" className="about-story-tall" />
       </div>
-      <p className="about-note">Sample imagery for layout direction only. These are not Hynox client commissions or supplied project assets.</p>
+      <p className="about-note">Promotional films and reel by HYNOX. Still photographs are sample imagery for layout direction.</p>
     </section>
 
     <section className="about-block about-client-work">
       <Topline left="05 / SELECTED CLIENT WORK" right="FEATURED PROJECT" />
       <Heading note={<span className="about-client-name">T3 ASSOCIATES<em>Temple City</em></span>}>Selected<br /><em>client work.</em></Heading>
-      <div className="about-client-grid"><div><SamplePhoto image="architecture" alt="Sample image for Temple City layout, not T3 project media" className="about-client-architecture" /><span className="about-sample-tag">SAMPLE IMAGE · NOT T3 PROJECT MEDIA</span></div><div><SamplePhoto image="production" alt="Sample production frame, not T3 footage" className="about-client-production" onClick={() => openPreview('Temple City — project media needed')} /><p className="about-client-services">BRANDING · PHOTOGRAPHY · VIDEOGRAPHY · CREATIVE PRODUCTION</p><p>A Temple City project presented as a media-layout sample. Replace these sample images with approved T3 Associates project assets before publishing.</p><small>PROJECT MEDIA NEEDED</small></div></div>
+      <div className="about-client-grid"><div><SamplePhoto image="architecture" alt="Sample image for Temple City layout, not T3 project media" className="about-client-architecture" /><span className="about-sample-tag">SAMPLE IMAGE · NOT T3 PROJECT MEDIA</span></div><div><ShowcaseVideo src="/Temple%20city.mp4" label="Temple City project film for T3 Associates" className="about-client-production" /><p className="about-client-services">BRANDING · PHOTOGRAPHY · VIDEOGRAPHY · CREATIVE PRODUCTION</p><p>Temple City — a project film for T3 Associates.</p></div></div>
     </section>
 
     <section className="about-block about-partners">
